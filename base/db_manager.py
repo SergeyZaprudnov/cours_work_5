@@ -1,6 +1,7 @@
 import psycopg2
 from base.conf_parser import config
 
+
 class DBManager:
     def __init__(self, database_name: str):
         self._database = database_name
@@ -31,9 +32,10 @@ class DBManager:
     def get_all_vacansies(self):
         self.connect()
         cur = self._connection.cursor()
-        cur.execute("SELECT e.name AS company_name, v.name AS vacancy_name, v.salary_from, v.salary_to, v.currency, v.url"
-                    "FROM employers e"
-                    "JOIN vacancies  ON e.employer_id = v.employer_id;")
+        cur.execute(
+            "SELECT e.name AS company_name, v.name AS vacancy_name, v.salary_from, v.salary_to, v.currency, v.url"
+            "FROM employers e"
+            "JOIN vacancies  ON e.employer_id = v.employer_id;")
         rows = cur.fetchall()
         for r in rows:
             print(r)
@@ -55,6 +57,18 @@ class DBManager:
         cur.execute("SELECT * FROM vacancies WHERE salary_from > (SELECT AVG(salary_from) FROM vacancies)")
         rows = cur.fetchall()
         for r in rows:
+            print(f"id: {r[0]} Вакансия: {r[2], r[3], r[4], r[5], r[6]}")
+        cur.close()
+        self.close()
+
+    def get_vacancies_with_keyword(self, keyword):
+        self.connect()
+        cur = self._connection.cursor()
+        sql_query = "SELECT * FROM vacancies WHERE name LIKE %s"
+        search_params = (f'%{keyword}%',)
+        cur.execute(sql_query, search_params)
+        result = cur.fetchall()
+        for r in result:
             print(f"id: {r[0]} Вакансия: {r[2], r[3], r[4], r[5], r[6]}")
         cur.close()
         self.close()

@@ -36,3 +36,13 @@ class HHApi:
             print('Error:', response.status_code)
         return self.employer_data, vacancies_data
 
+    @staticmethod
+    def get_employers(employer_id):
+        employers = []
+        response_employers = requests.get(f'https://api.hh.ru/employers/{employer_id}')
+        if response_employers.ok:
+            data_employer = response_employers.json()
+            employer = {'employer_id': data_employer['id'], 'name': data_employer['name'],
+                        'url': data_employer['site_url']}
+            employers.append(employer)
+        return employers

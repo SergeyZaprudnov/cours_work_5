@@ -10,3 +10,8 @@ class DBManager:
         params = config()
         params['database'] = self._database
         self._connection = psycopg2.connect(**params)
+
+    def close(self):
+        if self._connection is not None:
+            self._connection.close()
+

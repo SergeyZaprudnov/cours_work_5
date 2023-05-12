@@ -39,3 +39,13 @@ class DBManager:
             print(r)
         cur.close()
         self.close()
+
+    def get_avg_salary(self):
+        self.connect()
+        cur = self._connection.cursor()
+        cur.execute("SELECT AVG((salary_from + salary_to) / 2) as average_salary FROM vacancies;")
+        rows = cur.fetchall()
+        print(f"Средняя заработная плата от: {rows}")
+        cur.close()
+        self.close()
+

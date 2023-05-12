@@ -27,3 +27,15 @@ class DBManager:
             print(f"{r}: {r} vacancies")
         cur.close()
         self.close()
+
+    def get_all_vacansies(self):
+        self.connect()
+        cur = self._connection.cursor()
+        cur.execute("SELECT e.name AS company_name, v.name AS vacancy_name, v.salary_from, v.salary_to, v.currency, v.url"
+                    "FROM employers e"
+                    "JOIN vacancies  ON e.employer_id = v.employer_id;")
+        rows = cur.fetchall()
+        for r in rows:
+            print(r)
+        cur.close()
+        self.close()

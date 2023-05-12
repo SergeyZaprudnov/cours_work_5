@@ -49,3 +49,12 @@ class DBManager:
         cur.close()
         self.close()
 
+    def get_vacancies_with_higher_salary(self):
+        self.connect()
+        cur = self._connection.cursor()
+        cur.execute("SELECT * FROM vacancies WHERE salary_from > (SELECT AVG(salary_from) FROM vacancies)")
+        rows = cur.fetchall()
+        for r in rows:
+            print(f"id: {r[0]} Вакансия: {r[2], r[3], r[4], r[5], r[6]}")
+        cur.close()
+        self.close()

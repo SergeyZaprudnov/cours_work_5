@@ -49,12 +49,12 @@ def working_with_the_database():
 
 def data_entry():
     if working_with_the_database() == 1:
-        bd_input = input("Введите название вашей базы данных: ")
+        db_input = input("Введите название вашей базы данных: ")
         employer_input = input("Введите название компании, для получения вакансий,\n"
                                "Например Carprice: ")
-        if bd_input:
+        if db_input:
             if employer_input:
-                insert_data(bd_input, employer_input)
+                insert_data(db_input, employer_input)
                 print(f"Данные о {employer_input}, а так же вакансиях компании успешно добавлены")
             else:
                 print("Название компании не введено!")

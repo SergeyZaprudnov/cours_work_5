@@ -2,9 +2,10 @@ from base.database_creation import create_db_and_tabl
 from base.insert_db import insert_data
 from base.db_manager import DBManager
 
+
 def start_of_the_program():
     print("Добро пожаловать в программу по работе с базой данных PostgreSQL\n"
-          "Программа позволяет получить сведения о работодателях, а так же, их вакансиях с интернет ресурса HeadHunter.\n"
+          "Программа позволяет получить сведения о работодателях, а так же, их вакансиях с ресурса HeadHunter.\n"
           "Полученные Вами данные будут сохраняться в базу данных.\n"
           "Приятного Вам пользования!")
 
@@ -20,6 +21,7 @@ def start_of_the_program():
         else:
             print("Вы сделали не правильный выбор, попробуйте еще раз.\n")
 
+
 def creating_a_user_database():
     if start_of_the_program() == 1:
         database_name = input("Введите название Вашей базы данных: ").lower()
@@ -28,6 +30,7 @@ def creating_a_user_database():
               "Нажмите правой кнопкой мышки на надписть PostgreSQL и выберете из выпадающего списка комнду Refresh.\n"
               "Сразу после обновления списка появится созданная Вами база данных с Вашим названием\n"
               "Нажмите на название Вашей базы данных левой кнопкой мышки для ее выбора и активации")
+
 
 def working_with_the_database():
     print("Теперь перейдем к заполнению Вашей базы данных информацией о работодателях и их вакансиях")
@@ -43,6 +46,7 @@ def working_with_the_database():
         else:
             print("Вы сделали не правильный выбор. Попробуйте еще раз.\n")
 
+
 def data_entry():
     if working_with_the_database() == 1:
         bd_input = input("Введите название вашей базы данных: ")
@@ -56,6 +60,7 @@ def data_entry():
                 print("Название компании не введено!")
         else:
             print("Название базы данных не введено!")
+
 
 def user_interaction():
     print("Получение информацию из базы данных.")
@@ -107,6 +112,7 @@ def user_interaction():
             break
         else:
             print("Вы сделали не правильный выбор. Попробуйте еще раз.\n")
+
 
 def main():
     creating_a_user_database()

@@ -9,15 +9,16 @@ def insert_data(dbname: str, search_query) -> None:
     hh_api = HHApi()
     employers_data, vacancies_data = hh_api.get_vacancies(search_query)
     for employer in employers_data:
-        cur.execute("INSERT INTO employers (employers_id, name, url) VALUES (%s, %s, %s)",
-                    (employer['employer_id'], employer['name'], employer['url']))
-    for vac in vacancies_data:
+        for employer in employers_data:
+            cur.execute("INSERT INTO employers (employer_id, name, url) VALUES (%s, %s, %s)",
+                        (employer['employer_id'], employer['name'], employer['url']))
+    for vacancy in vacancies_data:
         cur.execute(
-            "INSERT INTO vacancies"
-            "(employer_id, name, description, area, url, salary_from, salary_to, currency, published_at)"
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", vac['employer_id'], vac['vacancy_name'],
-            vac['description'], vac['area'], vac['url'], vac['salary_from'], vac['salary_to'], vac['currency'],
-            vac['published_at'])
+            "INSERT INTO vacancies "
+            "(employer_id, name, description, area, url, salary_from, salary_to, currency, published_at) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+            (vacancy['employer_id'], vacancy['vacancy_name'], vacancy['description'], vacancy['area'], vacancy['url'],
+             vacancy['salary_from'], vacancy['salary_to'], vacancy['currency'], vacancy['published_at']))
 
         conn.commit()
         cur.close()

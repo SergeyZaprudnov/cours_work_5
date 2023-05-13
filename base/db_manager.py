@@ -20,7 +20,7 @@ class DBManager:
         cur.close()
         conn.close()
 
-    def get_all_vacansies(self):
+    def get_all_vacancies(self):
         conn = psycopg2.connect(host="localhost", database=self._database, user=user, password=password)
         cur = conn.cursor()
         cur.execute(

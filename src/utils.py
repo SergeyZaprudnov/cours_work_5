@@ -1,5 +1,5 @@
 from base.database_creation import create_db_and_tabl
-from base.insert_db import inert_data
+from base.insert_db import insert_data
 from base.db_manager import DBManager
 
 def start_of_the_program():
@@ -43,4 +43,16 @@ def working_with_the_database():
         else:
             print("Вы сделали не правильный выбор. Попробуйте еще раз.\n")
 
-start_of_the_program()
+def data_entry():
+    if working_with_the_database() == 1:
+        bd_input = input("Введите название вашей базы данных: ")
+        employer_input = input("Введите название компании, для получения вакансий,\n"
+                               "Например Carprice: ")
+        if bd_input:
+            if employer_input:
+                insert_data(bd_input, employer_input)
+                print(f"Данные о {employer_input}, а так же вакансиях компании успешно добавлены")
+            else:
+                print("Название компании не введено!")
+        else:
+            print("Название базы данных не введено!")

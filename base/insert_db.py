@@ -8,9 +8,9 @@ def insert_data(dbname: str, search_query) -> None:
     cur = conn.cursor()
     hh_api = HHApi()
     employers_data, vacancies_data = hh_api.get_vacancies(search_query)
-    for emp in employers_data:
+    for employer in employers_data:
         cur.execute("INSERT INTO employers (employers_id, name, url) VALUES (%s, %s, %s)",
-                    (emp['employer_id'], emp['name'], emp['url']))
+                    (employer['employer_id'], employer['name'], employer['url']))
     for vac in vacancies_data:
         cur.execute(
             "INSERT INTO vacancies"

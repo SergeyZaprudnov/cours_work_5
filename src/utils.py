@@ -108,3 +108,7 @@ def user_interaction():
         else:
             print("Вы сделали не правильный выбор. Попробуйте еще раз.\n")
 
+def main():
+    creating_a_user_database()
+    data_entry()
+    user_interaction()

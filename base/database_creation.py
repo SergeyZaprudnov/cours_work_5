@@ -1,5 +1,5 @@
 import psycopg2
-from base.conf_parser import config
+from base.config import user, password
 
 
 def create_db_and_tabl(dbname: str) -> None:

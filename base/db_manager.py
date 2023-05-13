@@ -1,5 +1,5 @@
 import psycopg2
-from base.conf_parser import config
+from base.config import user, password
 
 
 class DBManager:

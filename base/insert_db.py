@@ -3,7 +3,7 @@ from src.hh_api_key import HHApi
 from base.config import user, password
 
 
-def inert_data(dbname: str, search_query) -> None:
+def insert_data(dbname: str, search_query) -> None:
     conn = psycopg2.connect(database=dbname, user=user, password=password, host="localhost", port="5432")
     cur = conn.cursor()
     hh_api = HHApi()

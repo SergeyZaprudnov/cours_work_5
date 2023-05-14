@@ -68,7 +68,7 @@ def user_interaction():
         print("Для продолжения работы введите цифру 1.\n"
               "Для выхода из программы введите цифру 2.\n")
         choice = input("Введите цифру: ")
-        if choice == "1":
+        if choice == '1':
             db_name = input("Введите название базы данных: ")
             db_manager = DBManager(db_name)
             job_options = "Для выхода из программы нажмите '1'\n" \
@@ -84,23 +84,23 @@ def user_interaction():
             print(job_options)
             while True:
                 user_input = input("Выбор запроса: ")
-                if user_input == "1":
+                if user_input == '1':
                     print("Всего вам хорошего! Благодарим за использование данной программы.")
                     break
-                elif user_input == "2":
+                elif user_input == '2':
                     db_manager.get_companies_and_vacancies_count()
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
-                elif user_input == "3":
+                elif user_input == '3':
                     db_manager.get_all_vacancies()
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
-                elif user_input == "4":
+                elif user_input == '4':
                     db_manager.get_avg_salary()
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
-                elif user_input == "5":
+                elif user_input == '5':
                     db_manager.get_vacancies_with_higher_salary()
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
-                elif user_input == "6":
-                    user_input = input()
+                elif user_input == '6':
+                    #user_input = input()
                     db_manager.get_vacancies_with_keyword(user_input)
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
                 elif user_input == '0':

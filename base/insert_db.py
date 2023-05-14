@@ -20,6 +20,6 @@ def insert_data(dbname: str, search_query) -> None:
             (vacancy['employer_id'], vacancy['vacancy_name'], vacancy['description'], vacancy['area'], vacancy['url'],
              vacancy['salary_from'], vacancy['salary_to'], vacancy['currency'], vacancy['published_at']))
 
-        conn.commit()
-        cur.close()
-        conn.close()
+    conn.commit()
+    cur.close()
+    conn.close()

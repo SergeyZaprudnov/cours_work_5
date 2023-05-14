@@ -53,10 +53,10 @@ def data_entry():
         employer_input = input("Введите название компании, для получения вакансий,\n"
                                "Например Carprice: ")
         if db_input:
-            if employer_input:
+            #if employer_input:
                 insert_data(db_input, employer_input)
                 print(f"Данные о {employer_input}, а так же вакансиях компании успешно добавлены")
-            else:
+            #else:
                 print("Название компании не введено!")
         else:
             print("Название базы данных не введено!")

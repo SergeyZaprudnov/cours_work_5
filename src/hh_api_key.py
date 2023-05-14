@@ -5,14 +5,14 @@ import requests
 class HHApi:
     def __init__(self):
         self.employer_data = None
-        self.url_hh = f'https://api.hh.ru/vacancies'
+        self.url_hh = "https://api.hh.ru/vacancies"
 
     def get_vacancies(self, search_query):
         params = {'text': search_query, 'per_page': 100, 'area': 113}
         vacancies_data = []
         response = requests.get(self.url_hh, params)
         if response.status_code == 200:
-            vacancies = response.json()['items']
+            vacancies = response.json()["items"]
             for vacancy in vacancies:
                 if vacancy['employer']['name'] == search_query:
                     if vacancy['salary'] is not None:
@@ -33,7 +33,7 @@ class HHApi:
                     else:
                         continue
         else:
-            print('Error:', response.status_code)
+            print("Error:", response.status_code)
         return self.employer_data, vacancies_data
 
     @staticmethod

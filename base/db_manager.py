@@ -10,11 +10,12 @@ class DBManager:
 
         conn = psycopg2.connect(host="localhost", database=self._database, user=user, password=password)
         cur = conn.cursor()
-        cur.execute("SELECT e.name AS company_name, COUNT(v.vacancy_id) AS vacancies_count "
-                    "FROM employers e LEFT JOIN vacancies v ON e.employer_id = v.employer_id "
-                    "GROUP BY e.name "
-                    "ORDER BY vacancies_count DESC;"
-                    )
+        cur.execute(
+            "SELECT e.name AS company_name, COUNT(v.vacancy_id) AS vacancies_count "
+            "FROM employers e LEFT JOIN vacancies v ON e.employer_id = v.employer_id "
+            "GROUP BY e.name "
+            "ORDER BY vacancies_count DESC;"
+        )
         rows = cur.fetchall()
         for r in rows:
             print(f"{r}: {r} vacancies")
@@ -24,10 +25,11 @@ class DBManager:
     def get_all_vacancies(self):
         conn = psycopg2.connect(host="localhost", database=self._database, user=user, password=password)
         cur = conn.cursor()
-        cur.execute(
-            "SELECT e.name AS company_name, v.name AS vacancy_name, v.salary_from, v.salary_to, v.currency, v.url"
-            "FROM employers e"
-            "JOIN vacancies  ON e.employer_id = v.employer_id;")
+        cur.execute('''
+                SELECT e.name AS company_name, v.name AS vacancy_name, v.salary_from, v.salary_to, v.currency, v.url
+                FROM employers e
+                JOIN vacancies v ON e.employer_id = v.employer_id;
+                ''')
         rows = cur.fetchall()
         for r in rows:
             print(r)

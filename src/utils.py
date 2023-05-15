@@ -100,7 +100,7 @@ def user_interaction():
                     db_manager.get_vacancies_with_higher_salary()
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
                 elif user_input == '6':
-                    # user_input = input()
+                    user_input = input()
                     db_manager.get_vacancies_with_keyword(user_input)
                     print("Запрос осуществлен, для возврата в меню нажмите '0'")
                 elif user_input == '0':
